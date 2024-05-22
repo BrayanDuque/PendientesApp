@@ -37,8 +37,11 @@
         <!-- This should be `0 items left` by default -->
         <span class="todo-count">
           <strong>{{filtrandoTareas().length}}</strong> 
-          <span *ngIf="filtrandoTareas().length == 1; else elseitems"> item</span>
-          <ng-template #elseitems> items</ng-template>
+          @if (filtrandoTareas().length == 1) {
+            <span> item</span>
+          }@else {
+            <span> items</span>
+          }
           
         </span>
         <!-- Remove this if you don't implement routing -->
@@ -58,3 +61,9 @@
       </footer>
     </div>
   </section>
+
+
+
+
+
+  
