@@ -1,0 +1,60 @@
+<section class="todoapp">
+    <header class="header">
+      <div class="container">
+        <h1>Pendientes</h1>
+        <p>No olvidar que tengo que hacer esto</p>
+        <input
+          class="new-todo"
+          placeholder="Tengo que hacer.."
+          autofocus
+          type="text"
+          [formControl] = "nuevasTareas"
+          (keydown.enter)="cambiosControlador()" 
+        />
+      </div>
+    </header>
+    <div class="container todoapp-wrapper">
+      <!-- This section should be hidden by default and shown when there are todos -->
+      <!-- <pre><code>{{ tareas() | json}}</code></pre> -->
+      <section class="main">
+        <ul class="todo-list">  
+          <li 
+          *ngFor="let tarea of filtrandoTareas(); index as i" 
+          [class.completed]="tarea.completed" 
+          (dblclick)="modoEdicion(i)"
+          [class.edition]="tarea.edition">
+            <div class="view">
+              <input class="toggle" type="checkbox" [checked]="tarea.completed"  (change)="aceptarTarea(tarea)" />
+              <label>{{ tarea.titulo }}</label>
+              <button class="destroy" (click)="eliminarTarea(i)"></button>
+            </div>
+            <input class="edit" (keydown.enter)="modoEdicionTexto(i, $event)" [value]="tarea.titulo" />
+          </li>
+        </ul>
+      </section>
+      <!-- This footer should be hidden by default and shown when there are todos -->
+      <footer class="footer">
+        <!-- This should be `0 items left` by default -->
+        <span class="todo-count">
+          <strong>{{filtrandoTareas().length}}</strong> 
+          <span *ngIf="filtrandoTareas().length == 1; else elseitems"> item</span>
+          <ng-template #elseitems> items</ng-template>
+          
+        </span>
+        <!-- Remove this if you don't implement routing -->
+        <ul class="filters">
+          <li>
+            <a (click)="cambiosfiltro('Todos')" [class.seleted]="filter() === 'Todos'">Todos</a>
+          </li>
+          <li>
+            <a (click)="cambiosfiltro('Pendientes')" [class.seleted]="filter() === 'Pendientes'">Pendientes</a>
+          </li>
+          <li>
+            <a (click)="cambiosfiltro('Completado')" [class.seleted]="filter() === 'Completado'">Completado</a>
+          </li>
+        </ul>
+        <!-- Hidden if no completed items are left ↓ -->
+        <button class="clear-completed">Clear completed</button>
+      </footer>
+    </div>
+  </section>
