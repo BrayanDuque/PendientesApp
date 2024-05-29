@@ -3,6 +3,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  
 }
 
 button {
@@ -28,6 +29,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300;
+  padding: 0 3px;
 }
 
 :focus {

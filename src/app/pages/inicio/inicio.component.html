@@ -46,14 +46,14 @@
         </span>
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
-          <li>
-            <a (click)="cambiosfiltro('Todos')" [class.seleted]="filter() === 'Todos'">Todos</a>
+          <li >
+            <a class="cursor" (click)="cambiosfiltro('Todos')" [class.seleted]="filter() === 'Todos'">Todos</a>
+          </li>
+          <li >
+            <a class="cursor" (click)="cambiosfiltro('Pendientes')" [class.seleted]="filter() === 'Pendientes'">Pendientes</a>
           </li>
           <li>
-            <a (click)="cambiosfiltro('Pendientes')" [class.seleted]="filter() === 'Pendientes'">Pendientes</a>
-          </li>
-          <li>
-            <a (click)="cambiosfiltro('Completado')" [class.seleted]="filter() === 'Completado'">Completado</a>
+            <a class="cursor" (click)="cambiosfiltro('Completado')" [class.seleted]="filter() === 'Completado'">Completado</a>
           </li>
         </ul>
         <!-- Hidden if no completed items are left ↓
@@ -65,5 +65,3 @@
 
 
 
-
-  
